@@ -25,7 +25,7 @@ int main(int argc, char ** argv) {
 
     ros::init(argc, argv, "stereo_pub");
     ros::NodeHandle n;
-    ros::Rate loop_rate(10);
+    ros::Rate loop_rate(30);
 
     //todo: get rid of compressedepth topic on image.
     image_transport::ImageTransport it(n);
