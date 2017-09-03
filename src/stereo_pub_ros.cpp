@@ -30,9 +30,9 @@ int main(int argc, char ** argv) {
     //todo: get rid of compressedepth topic on image.
     image_transport::ImageTransport it(n);
     image_transport::Publisher left_image_pub = it.advertise(
-            "camera/left/image", 1);
+            "camera/left/image_raw", 1);
     image_transport::Publisher right_image_pub = it.advertise(
-            "camera/right/image", 1);
+            "camera/right/image_raw", 1);
 
     VideoCapture capture;
     Mat frame, left_img, right_img;
