@@ -1,6 +1,8 @@
 /*
  * stereo_pub_ros.cpp
  *
+ *  rosrun stereo_pub stereo_pub_node 1 720
+ *
  *  Created on: Aug 27, 2017
  *      Author: joey
  */
@@ -38,9 +40,14 @@ int main(int argc, char ** argv) {
     Mat frame, left_img, right_img;
 
     int camera_id = 0;
-    if(argc == 2){
+    int camera_height = 720;
+    if(argc == 3){
         std::stringstream ss(argv[1]);
         ss >> camera_id;
+        ss.clear();
+        std::stringstream s1(argv[2]);
+        s1 >> camera_height;
+
     }
 
     if (!capture.open(camera_id)) {
@@ -49,8 +56,14 @@ int main(int argc, char ** argv) {
     }
 
     if (capture.isOpened()) {
-        capture.set(CV_CAP_PROP_FRAME_WIDTH,2560);    //  1280x720
-        capture.set(CV_CAP_PROP_FRAME_HEIGHT,720);
+
+    	if(camera_height == 480){
+    		capture.set(CV_CAP_PROP_FRAME_WIDTH,1280);    //  1280x720
+    	}else{
+    		capture.set(CV_CAP_PROP_FRAME_WIDTH,2560);    //  1280x720
+    	}
+
+        capture.set(CV_CAP_PROP_FRAME_HEIGHT,camera_height);
         capture.set(CV_CAP_PROP_FOURCC,CV_FOURCC('M','J','P','G'));
 //        capture.set(CV_CAP_PROP_FRAME_WIDTH, 640);  //640x480
 //        capture.set(CV_CAP_PROP_FRAME_HEIGHT, 480);
