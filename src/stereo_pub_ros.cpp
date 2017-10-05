@@ -90,6 +90,10 @@ int main(int argc, char ** argv) {
                     "bgr8", left_img).toImageMsg();
             sensor_msgs::ImagePtr right_msg = cv_bridge::CvImage(std_msgs::Header(),
                     "bgr8", right_img).toImageMsg();
+
+            left_msg->header.stamp = ros::Time::now();
+            right_msg->header.stamp = left_msg->header.stamp;
+
             left_image_pub.publish(left_msg);
             right_image_pub.publish(right_msg);
 
