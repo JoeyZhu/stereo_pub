@@ -50,6 +50,7 @@ int main(int argc, char ** argv) {
 
     }
 
+    printf("opening camera:%d\n", camera_id);
     if (!capture.open(camera_id)) {
         std::cout << "Capture from camera " << camera_id << " didn't work" << std::endl;
         return -1;
@@ -58,8 +59,10 @@ int main(int argc, char ** argv) {
     if (capture.isOpened()) {
 
     	if(camera_height == 480){
+    		printf("opening 1280 width\n");
     		capture.set(CV_CAP_PROP_FRAME_WIDTH,1280);    //  1280x720
     	}else{
+    		printf("opening 2560 width\n");
     		capture.set(CV_CAP_PROP_FRAME_WIDTH,2560);    //  1280x720
     	}
 
