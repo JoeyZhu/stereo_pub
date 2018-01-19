@@ -3,6 +3,8 @@ project(stereo_pub)
 
 add_compile_options(-std=c++11)
 
+SET("OpenCV_DIR" "/usr/share/OpenCV/")
+
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
